@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+<script>
+    function computerPlay() {
+        let randomNumber;
+        randomNumber = Math.random() * 10;
+        if(randomNumber < 3) {
+            return "rock";
+        } else if(randomNumber >= 3 && randomNumber < 7) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
+    }
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function gameLogic(computerSelection){
+            console.log("Enter one of the following: Rock, Paper or Scissors.")
+            let playerInput = prompt().toLowerCase();
+            if(playerInput === 'rock' && computerSelection === 'rock' || playerInput === 'paper' && computerSelection === 'paper' || playerInput === 'scissors' && computerSelection === 'scissors') {
+                console.log("The human player chose: "+playerInput);
+                console.log("The computer player chose: "+computerSelection);
+                console.log("Nobody wins this round");
+            } else if (playerInput === 'rock' && computerSelection === 'scissors' || playerInput === 'scissors' && computerSelection === 'paper' || playerInput === 'paper' && computerSelection === 'rock') {
+                humanScore++;
+                console.log("The human player chose: "+playerInput);
+                console.log("The computer player chose: "+computerSelection);
+                console.log("Human player wins this round");
+            } else {
+                computerScore++;
+                console.log("The human player chose: "+playerInput);
+                console.log("The computer player chose: "+computerSelection);
+                console.log("Computer player wins this round");
+            }
+    }
+    function game(){
+        for(let i=0; i<5; i++){
+            gameLogic(computerPlay());
+        }
+        if(humanScore===computerScore){
+            return ("Nobody has won this match");
+        } else if (humanScore>computerScore) {
+            return ("Human player has won this match");
+        } else {
+            return ("Computer has won this match");
+        }
+    }
+    console.log(game());
+</script>
+</body>
+</html>
